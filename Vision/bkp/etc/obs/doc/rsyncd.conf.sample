@@ -1,0 +1,15 @@
+#secrets file = /etc/rsyncd_passwords
+read only = yes
+uid = nobody
+gid = nobody
+list = yes
+log file = /var/log/rsyncd.log
+pid file = /var/run/rsyncd.pid
+# ivan : since ldap (aug 13 04), rsyncd doesn't work anymore
+#  (strace shows that the child sigsegvs ; nothing in the logs though)
+# that's not very secure :(
+use chroot = no
+
+[store]
+    path = /home/store
+

@@ -1,0 +1,12 @@
+#!/bin/bash
+
+err() {
+        echo "$*" >&2
+        exit 1
+}
+
+cd /home/ikatsarov/Downloads/Vision/Automation/ || err "Error moving to this dir!"
+
+zone=("" "all" "ws_ext_16" "ws_ext_17" "ws_ext_21" "ws_ext_22" "ws_ext_23")
+
+ANSIBLE_GATHERING=explicit ansible-playbook --user root -e "pchosts=${zone[1]}" -i inventory playbook.yml --tags "Update"

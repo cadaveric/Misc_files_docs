@@ -1,0 +1,59 @@
+- hosts: "{{ pchosts }}"
+  tasks:
+   - ping:
+
+- name: Run the equivalent of "apt-get update" as a separate step
+  hosts: "{{ pchosts }}"
+  gather_facts: no
+  ignore_unreachable: yes 
+  tasks:  
+    - apt:
+          update_cache: yes
+  tags: update
+
+- name: Update all packages to their latest version
+  hosts: "{{ pchosts }}"
+  gather_facts: no
+  ignore_unreachable: yes
+  tasks:
+    - apt:
+         name: "*"
+         state: latest
+  tags: update 
+
+- name: Upgrade the OS (apt-get dist-upgrade)
+  hosts: "{{ pchosts }}"
+  gather_facts: no
+  ignore_unreachable: yes
+  tasks:
+    - apt:
+          upgrade: dist
+  tags: update
+
+- name: Remove useless packages from the cache
+  hosts: "{{ pchosts }}"
+  gather_facts: no  
+  ignore_unreachable: yes
+  tasks:
+   - apt:
+         autoclean: yes
+  tags: autoclean
+
+- name: Remove dependencies that are no longer required
+  hosts: "{{ pchosts }}"
+  gather_facts: no
+  ignore_unreachable: yes
+  tasks:
+   - apt:
+         autoremove: yes
+  tags: autoclean
+
+- name: Run a script - Sophos
+  hosts: "{{ pchosts }}"
+  tasks:  
+    - name: Transfer the script
+      copy: src=SophosSetup_deb.sh dest=/home/tessi/ mode=0755  
+    
+    - name: Execute the script    
+      command: /home/tessi/SophosSetup_deb.sh
+  tags: sophos

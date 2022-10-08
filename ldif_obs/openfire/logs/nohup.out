@@ -1,0 +1,7 @@
+Openfire 4.3.2 [Jun 13, 2021 8:02:25 PM]
+Admin console listening at:
+  http://obs-02.local:9090
+  https://obs-02.local:9091
+Successfully loaded plugin 'admin'.
+Successfully loaded plugin 'search'.
+Finished processing all plugins.

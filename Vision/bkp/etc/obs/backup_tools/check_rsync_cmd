@@ -1,0 +1,72 @@
+#!/bin/sh
+
+# ivan - nov 24 05 
+
+# this script should be called from ssh's command= in authorized_keys2
+# for the backup machine key
+
+# we want to check that the command sent by the backup machine contains
+# the --sender flag which means the direction is only 
+# backuped machine -> backup machine
+
+# that way:
+#  - we're emulating a read only root account
+#  - the backup machine can only run rsync (that's also done from
+#    command= in authorized_keys2)
+
+# we also want to check the source ip ; we could do it with from=
+# in authorized_keys2, but sometimes we're natted sometimes not and
+# we can't specify more than one from= option
+# -> do the check here with the help of SSH_CONNECTION
+
+disp() {
+	echo -e "$*" >&2
+}
+err() {
+	disp "$(basename "$0") - err: $*"
+	exit 1
+}
+
+
+# IPs DEFINITIONS
+
+ALLOWED_IPS=
+
+. /etc/obs/backup_tools/defs || err "Error sourcing /etc/obs/backup_tools/defs"
+
+[ -z "$ALLOWED_IPS" ] && err "ALLOWED_IPS is still empty after sourcing defs"
+
+
+# CHECK RSYNC CMD
+
+# a typical rsync command looks like:
+
+# rsync --server --sender -vblHogDtprz --backup-dir rsync_backup/Thu --delete --numeric-ids . /
+
+# for now, only the first 3 arguments are important ; we may add
+# more complicated logic later
+
+if ! echo $SSH_ORIGINAL_COMMAND | grep -q '^rsync --server --sender'; then
+	err "command not allowed: \"$SSH_ORIGINAL_COMMAND\""
+fi
+
+
+# SOURCE IP CHECK
+
+SSH_IP=${SSH_CONNECTION%% *}
+IP_OK=
+for i in $ALLOWED_IPS; do
+	[ "$SSH_IP" = "$i" ] && IP_OK=1 && break
+done
+
+[ -z "$IP_OK" ] && err "ip $SSH_IP not allowed"
+
+
+
+# create a sysinfo file into /tmp
+# note that if this prog outputs anything to stdout that 
+# will break rsync ! -> redirect to null
+/etc/obs/backup_tools/create_sysinfo > /dev/null
+
+exec $SSH_ORIGINAL_COMMAND
+

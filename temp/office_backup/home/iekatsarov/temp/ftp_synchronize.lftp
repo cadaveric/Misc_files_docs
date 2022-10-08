@@ -1,0 +1,4 @@
+open -u iekatsarov,appostolov 192.168.16.14
+cd temp
+lcd /root/temp
+mirror -Rn

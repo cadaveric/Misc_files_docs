@@ -1,0 +1,89 @@
+#!/bin/bash
+
+# ivan - nov 29 06
+
+disp() {
+	echo "$*" >&2
+}
+err() {
+	disp "$*"
+	exit 1
+}
+
+
+usage() {
+	disp "Usage: $(basename "$0") [ -a [ -u ] ] [ -d ] user"
+	disp "   -a:  add user"
+	disp "   -d:  remove user"
+	disp "   default: show user"
+	exit 1
+}
+
+ADD_USER=
+DEL_USER=
+SHOW_USER=1
+CLIENT_USER=
+
+while getopts "acd" Option; do
+	case $Option in
+		a) ADD_USER=1 ; SHOW_USER=
+		;;
+		d) DEL_USER=1 ; SHOW_USER=
+		;;
+		*) usage
+	esac
+done
+
+shift $((OPTIND - 1))
+
+[ -z "$1" ] && usage
+
+USER_UID="$1"
+USER_UID=$(echo $USER_UID | tr -d '\n\r')
+
+if [ -n "$DEL_USER" ]; then
+	[ -n "$ADD_USER" ] && err "Can't have both -a and -d"
+fi
+
+
+if [ -n "$SHOW_USER" ]; then
+	ldapsearch -h localhost -LLL -l 3 -x -b "ou=Users,dc=obs,dc=local" "uid=$USER_UID"
+	exit
+fi
+
+
+cd /usr/local/smbldap-tools || err "Can't cd to smbldap tools dir"
+
+if [ -n "$ADD_USER" ]; then
+	RETVAL=1
+
+	echo -n "Enter user '$USER_UID' fullname [Example: Ivan Ivanov Ivanov]: "
+	read USER_FULLNAME
+
+	[ -z "$USER_FULLNAME" -o ${#USER_FULLNAME} -lt 9 ] && err "Full name empty or too short!"
+
+	USER_FULLNAME=$(echo $USER_FULLNAME | tr -d '\n\r')
+	
+
+	ADD_OPTS="-a -H '[UX]'"
+
+	smbldap-useradd $ADD_OPTS "$USER_UID"
+	RETVAL=$?
+
+	if [ $RETVAL -eq 0 ]; then
+		smbldap-groupmod -m "$USER_UID" "Domain Users" || echo "<br>"
+		./estiym_user_modify_ldap_attributes "$USER_UID" "$USER_FULLNAME" || echo "<br>"
+
+		echo "setting LAN password \"bingo\" "
+		echo -e "bingo\nbingo" | smbldap-passwd -n "$USER_UID" > /dev/null || echo "<br>"
+	fi
+
+	exit $RETVAL # exit with the retval of useradd, it's the most important
+fi
+
+if [ -n "$DEL_USER" ]; then
+	smbldap-userdel "$USER_UID"
+	exit
+fi
+
+exit 0

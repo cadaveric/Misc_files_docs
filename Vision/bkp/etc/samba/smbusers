@@ -1,0 +1,5 @@
+# Unix_name = SMB_name1 SMB_name2 ...
+root = "OBS-02\administrator" administrator
+nobody = guest pcguest smbguest
+defaultobs = guest pcguest smbguest
+

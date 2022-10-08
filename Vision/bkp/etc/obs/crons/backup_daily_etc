@@ -1,0 +1,76 @@
+#!/bin/bash
+
+
+# backup /etc on a daily basis, using rsync backups
+
+# backups will end up in $BACKUP_DIR/day, where day is an abbreviated
+# day name (eg. mon). ; that way, we have one week of rotated backups
+
+# ivan - feb 16 05
+#  - moved chmod/chown of $BACKUP_DIR AFTER rsync because rsync applies
+#    the perm/owner of /etc ; only root should have access to this dir
+#  - re-iterate (max 3 times) when rsync fails (useful for retval 23)
+
+# ivan - aug 17 04 - changed backup dir to /var, since we might 
+#  export /home with nfs and we don't want people to read etc files
+
+# ivan - aug 11 04 - initial version
+
+
+
+# bugs/limitations
+#  - run only ONCE a day, or you'll loose the backup files stored at the
+#    previous run (because we "rm -fr" the rotated backup dir)
+
+BACKUP_DIR=/var/backup_etc
+
+#-------------------------------------#
+
+disp() {
+    echo "$(basename "$0"): $*" >&2
+}
+
+err() {
+    disp $*
+    exit 1
+}
+
+
+# misc usual tests, + create dirs
+
+[ "$UID" -ne 0 ] && err "Must be root to run this script"
+
+type rsync > /dev/null 2>&1 || err "rsync not found"
+
+mkdir -p "$BACKUP_DIR"  || err "Can't create $BACKUP_DIR"
+
+
+
+# don't mess with that variable, or you'll wipe out everything
+
+ROTATED_DIR="$BACKUP_DIR/rsync_backup/$(date "+%a")"
+
+[ -d "$ROTATED_DIR" ] && rm -fr "$ROTATED_DIR"  # clean old
+
+mkdir -p "$ROTATED_DIR" || err "Can't create $ROTATED_DIR"
+
+
+
+# backup
+NB_ITER=0
+MAX_ITER=3
+
+while [ "$NB_ITER" -lt "$MAX_ITER" ]; do
+   rsync -aH --delete --exclude "rsync_backup/" -b --backup-dir="$ROTATED_DIR"  /etc/ "$BACKUP_DIR"
+   [ "$?" -eq 0 ] && break
+   let NB_ITER++
+done
+
+# only root should be able to read that
+chmod 700 "$BACKUP_DIR" || err "Can't chmod 700 $BACKUP_DIR"
+chown root.root "$BACKUP_DIR" || err "Can't chown root.root $BACKUP_DIR"
+
+[ "$NB_ITER" -eq "$MAX_ITER" ] && 
+   err "Failed rsync ; $MAX_ITER consecutive failures"
+
+exit 0

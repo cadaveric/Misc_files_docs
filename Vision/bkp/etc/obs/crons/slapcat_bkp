@@ -1,0 +1,29 @@
+#!/bin/bash
+
+# ivan - 24 jan 07
+
+# dump ldap base in ldif format
+
+F_BKP="/etc/openldap/slapcat.cron.bkp.gz"
+
+# needed for cron to find slapcat
+PATH=/sbin:/bin:/usr/sbin:/usr/bin 
+
+err() {
+	echo $* >&2
+}
+
+
+
+# rather silly error tests, but the dumped data is higly sensitive,
+# so better be safe...
+
+[ -d "$(dirname "$F_BKP")" ] || err "No such dir: $(dirname "$F_BKP")"
+
+touch "$F_BKP" || err "Can't touch $F_BKP"
+
+chmod 600 "$F_BKP" || err "Can't chmod 600 $F_BKP"
+
+slapcat | gzip -c > "$F_BKP" || err "Can't slapcat/gzip to $F_BKP"
+
+exit 0

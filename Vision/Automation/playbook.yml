@@ -1,0 +1,41 @@
+- hosts: "{{ pchosts }}"
+  tasks:
+   - ping:
+
+- hosts: "{{ pchosts }}"
+  tasks:
+    - yum:
+        update_cache: yes
+        skip_broken: yes
+        name: '*'
+        state: latest
+      tags:
+        - Update
+     
+    - yum:
+        name: "{{ pkgname }}"
+        state: present
+      tags:
+        - Install
+    - yum:
+        name: "{{ pkgname }}"
+        state: absent
+      tags:
+        - Remove
+
+- name: Run custom script
+  hosts: "{{ pchosts }}"
+  tasks:
+   - shell: |
+       # cd /etc/obs/updates
+       # grep 0220 VERSION
+       #[ $? -eq 0 ] && sed 's/0220/0221/' VERSION
+       # ./do_update
+       /etc/obs/prepare_for_profile_sync.sh
+   - copy:
+        src: DigiCertTLSRSASHA2562020CA1.crt
+        dest: /opt/Citrix/ICAClient/keystore/cacerts/
+        mode: 0777
+   - shell: |
+       /opt/Citrix/ICAClient/util/ctx_rehash       	
+  tags: obs_updates

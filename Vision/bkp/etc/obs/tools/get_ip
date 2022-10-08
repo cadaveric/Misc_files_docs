@@ -1,0 +1,21 @@
+#!/bin/bash
+
+# return the ip (or a list of ips) of a given interface
+# using ip program.
+
+err() {
+   echo "$*" >&2 
+   exit 1
+}
+
+[ "$#" -ne 1 ] && err "Usage: $0 interface"
+
+! type -p ip > /dev/null 2>&1 && err "no ip exe found in $PATH"
+
+IP=`ip addr show dev $1 | sed -n '/inet/ s/.*inet \([0-9\.]*\)\/\?.*/\1/p'`
+
+[ -z "$IP" ] && err "No ip found for device $1"
+
+echo $IP
+
+exit 0

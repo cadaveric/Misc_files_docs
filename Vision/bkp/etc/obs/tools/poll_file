@@ -1,0 +1,124 @@
+#!/bin/bash
+
+# a little script that will start a program if a file is present and is not
+# growing or is not being modified ; we use polling and md5sum for that
+
+# design note: the programm called by this script is responsible of 
+#   removing the renamed file once it finishes its task;
+#   there is no way to include this functionality in this script.
+#
+# see usage() for an example
+
+# ivan - obs - march 1 05
+
+# bugs/limitations:
+#
+#  - monitor only files (no dir, symlink, ...)
+
+
+
+SLEEP_SEC=30 # default loop interval
+
+
+disp() {
+   echo -e "$*" >&2
+}
+   
+err() {
+   disp "$*"
+   exit 1
+}   
+	 
+
+usage() {
+
+   disp "Usage: $(basename "$0") [ -s secs ] -f file -F file program [ prog args ]"
+   disp "  -s seconds  : polling interval (default: $SLEEP_SEC)"
+   disp "  -f filename : file to monitor"
+   disp "  -F filename : move file to filename name after checksums are passed"
+   disp
+   disp " example: $(basename "$0") -s 12 -f /tmp/yo -F /tmp/yo.ok prog /tmp/yo.ok"
+   disp
+   disp "  will check every 12 seconds if /tmp/yo exists; if yes, compute its"
+   disp "  checksum and loop until two consequent md5 checksums are the same."
+   disp "  then, move /tmp/yo to /tmp.ok and start prog with arg /tmp/yo.ok"
+   disp
+
+}
+
+
+FNAME=
+NEW_FNAME=
+while getopts "s:f:F:" Option
+do
+   case $Option in
+         s) SLEEP_SEC="$OPTARG"
+            ;;
+         f) FNAME="$OPTARG"
+            ;;
+         F) NEW_FNAME="$OPTARG"
+            ;;	    
+         *) usage && err "Unimplemented parameter"
+   esac
+done
+
+# jump to args not given as options
+shift $((OPTIND - 1))
+
+# sanity checks
+
+[ "$#" -eq 0 ] && usage && exit 1
+
+PROG="$1" ; shift
+PROG_ARGS="$*"
+
+[ -z "$FNAME" ] && usage && exit 1
+[ -z "$NEW_FNAME" ] && usage && exit 1
+
+
+if ! ( type -p $PROG > /dev/null || [ -x "$PROG" ] ); then
+   err "not found: \"$PROG\" - not in path or not executable"
+fi
+
+
+echo $SLEEP_SEC | grep -q '^[0-9]\+$' ||
+   err "\"$SLEEP_SEC\" is not a valid number"
+
+
+type -p md5sum > /dev/null || err "md5sum is not in path"
+
+
+[ -e "$NEW_FNAME" ] && 
+   disp "Warning: $NEW_FNAME already exist"
+
+# end sanity checks
+
+
+OLD_CHECKSUM=
+
+while [ 1 ]; do
+
+   if [ -e "$NEW_FNAME" -o ! -f "$FNAME" ]; then
+      sleep $SLEEP_SEC
+      continue
+   fi
+
+   CHECKSUM=$(md5sum "$FNAME")
+      
+   if [ "$CHECKSUM" = "$OLD_CHECKSUM" ]; then
+   
+      if ! mv "$FNAME" "$NEW_FNAME"; then
+         disp "Can't move $FNAME to $NEW_FNAME"
+	 sleep $SLEEP_SEC
+	 continue
+      else
+         $PROG $PROG_ARGS
+      fi
+      
+   fi
+      
+   OLD_CHECKSUM=$CHECKSUM
+ 
+   sleep $SLEEP_SEC
+
+done

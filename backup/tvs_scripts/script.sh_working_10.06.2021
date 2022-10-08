@@ -1,0 +1,30 @@
+#!/bin/bash
+
+# raiseAll - Mark Belanger - raise all windows
+#$curPATH=pwd
+#ls -lart $curPATH
+#rm $curPATH/screenshot* -rf
+rm /home/admins/Desktop/screenshot* -rf
+#sleep 1
+# get the ID of the current desktop
+thisDT=`wmctrl -d |grep ' \* ' | awk '{print $1}'`
+
+#echo Raising windows for desktop $thisDT
+for window in `wmctrl -l |grep " $thisDT " | awk '{print $1}'`
+do
+  #echo Raising $window - put your screenshot command here
+ # 12.03.2021 import -window $window  -delay 200 /home/alex/Desktop/screenshot-$window.png
+import -window $window -delay 1  /home/admins/Desktop/screenshot-$window.png
+
+ #wmctrl -i -a $window
+  sleep 1
+done
+
+
+
+scp -i /home/admins/new-server_01.10.2010_pdc /home/admins/Desktop/screenshot-* root@estiym.com:/var/www/html/4/
+scp -i /home/admins/new-server_01.10.2010_pdc /home/admins/Desktop/screenshot-* root@estiym.com:/var/www/html/5/
+
+#rsync -avz --force /home/admins/Desktop/screenshot-* root@estiym.com:/var/www/html/4/
+#ssh -i /home/admins/new-server_01.10.2010_pdc root@estiym.com
+

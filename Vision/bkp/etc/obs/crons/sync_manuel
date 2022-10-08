@@ -1,0 +1,16 @@
+#!/bin/bash
+
+# sync the BPO manuel with b.obs.bg web serv
+
+# ivan - march 25 05 
+
+export RSYNC_PASSWORD=jlk13a9ak
+
+# !! don't mess with the excludes !!
+
+rsync -a --delete --exclude .ht* --exclude index.html --exclude html \
+   --exclude script/ --exclude src/ \
+   /home/www/http/manuel/ manuel@secure.b.obs.bg::bpo_manuel_html
+
+#rsync -a /home/htdig_bpomanuel/lib/ manuel@secure.b.obs.bg::bpo_manuel_htdig_lib
+

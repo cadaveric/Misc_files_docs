@@ -1,0 +1,10 @@
+#!/bin/bash
+
+##Delete files and dirs older than 7 days from their "deleted" folders
+
+for i in FIREWALL MAIL_NEW MSILOVA NEW_PDC_VPS NEW_STORE_VPS PDC SPISHEVA STORE TDJAMBOVA TPENERLIEVA VOIP VTOTOV
+
+do 
+	find /SRV_BACKUPS1/NEW_BACKUPS/$i/deleted -mindepth 2 -maxdepth 4 -mtime +3 -exec rm -rf {} \;
+
+done

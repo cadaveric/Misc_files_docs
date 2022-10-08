@@ -1,0 +1,56 @@
+# AUTO-GENERATED FILE - DO NOT EDIT!! Use ldapmodify.
+# CRC32 ae6c9a5a
+dn: olcDatabase={-1}frontend
+objectClass: olcDatabaseConfig
+objectClass: olcFrontendConfig
+olcDatabase: {-1}frontend
+olcAccess: {0}to *  by * none break
+olcAccess: {1}to *  by dn.base="uid=smb_server,ou=users,dc=obs,dc=local" wri
+ te  by * none break
+olcAccess: {2}to attrs=userPassword,SambaLMPassword,SambaNTPassword,sambaPas
+ swordHistory,SambaPwdLastSet,sambaPwdMustChange  by self write  by anonymou
+ s auth  by * none
+olcAccess: {3}to attrs=obsDMZPassword,obsSIPPassword  by * none
+olcAccess: {4}to dn.subtree="ou=users,dc=obs,dc=local"  filter="(objectClass
+ =obsPerson)"  attrs=obsRoomPhone,obsMiddleName,obsDMZPassword,obsSIPPasswor
+ d,obsEGN,obsIDNo,obsPassportNo,obsBirthDate,obsHiredDate,obsGender,obsICQNo
+ ,obsHomeFirstCountry,obsHomeFirstCity,obsHomeFirstStreet,obsHomeFirstStreet
+ No,obsHomeFirstPostalCode,obsHomeSecondCountry,obsHomeSecondCity,obsHomeSec
+ ondStreet,obsHomeSecondStreetNo,obsHomeSecondPostalCode,obsHomeSecondPhone,
+ obsWorkStreetNo,obsWorkDirectPSTNPhone,obsWorkDirectInternalPhone,obsWorkSo
+ ftPhone,obsWorkURL,obsEMailSecond,obsEMailThird,obsComment,obsCustom1,obsCu
+ stom2,obsCustom3,obsCustom4,cn,gecos,facsimileTelephoneNumber,initials,URL,
+ sn,givenName,mobile,homePhone,mail,o,homePostalAddress,homePhone,mobile  by
+  group/groupOfNames/member.exact="cn=obs_hr,ou=groups,dc=obs,dc=local" writ
+ e  by * none break
+olcAccess: {5}to dn.subtree="ou=users,dc=obs,dc=local"  filter="(objectClass
+ =obsPerson)"  attrs=obsICQNo,obsWorkDirectPSTNPhone,obsWorkDirectInternalPh
+ one,obsWorkSoftPhone,obsComment  by group/groupOfNames/member.exact="cn=obs
+ _secretary,ou=groups,dc=obs,dc=local" write  by * none break
+olcAccess: {6}to dn.subtree="ou=users,dc=obs,dc=local"  attrs=obsEGN,obsPass
+ portNo,obsIDNo,obsBirthDate,obsComment,obsHiredDate,obsHomeFirstCity,obsHom
+ eFirstCountry,obsHomeFirstPostalCode,obsHomeFirstStreet,obsHomeFirstStreetN
+ o,obsHomeSecondCity,obsHomeSecondCountry,obsHomeSecondPostalCode,obsHomeSec
+ ondStreetNo,obsHomeSecondStreet,obsEMailSecond,obsEMailThird,mobile,homePho
+ ne  by * none
+olcAccess: {7}to dn.subtree="ou=users,dc=obs,dc=local"  by * read
+olcAccess: {8}to dn.subtree="ou=groups,dc=obs,dc=local"  by * read
+olcAccess: {9}to dn.subtree="ou=rooms,dc=obs,dc=local"  attrs=memberUid  by 
+ group/groupOfNames/member.exact="cn=obs_hr,ou=groups,dc=obs,dc=local" write
+   by group/groupOfNames/member.exact="cn=obs_secretary,ou=groups,dc=obs,dc=
+ local" write  by * none break
+olcAccess: {10}to dn.subtree="ou=rooms,dc=obs,dc=local"  by * read
+olcAddContentAcl: FALSE
+olcLastMod: TRUE
+olcMaxDerefDepth: 0
+olcReadOnly: FALSE
+olcSchemaDN: cn=Subschema
+olcSyncUseSubentry: FALSE
+olcMonitoring: FALSE
+structuralObjectClass: olcDatabaseConfig
+entryUUID: cf6d9f30-115a-103c-935e-4dc1f47175cd
+creatorsName: cn=config
+createTimestamp: 20220124121340Z
+entryCSN: 20220124121340.236772Z#000000#000#000000
+modifiersName: cn=config
+modifyTimestamp: 20220124121340Z

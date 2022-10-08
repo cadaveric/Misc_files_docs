@@ -1,0 +1,141 @@
+$ORIGIN .
+$TTL 86400	; 1 day
+17.168.192.in-addr.arpa	IN SOA	ns.obs-02.local. admins.obs.bg.17.168.192.in-addr.arpa. (
+				2021080302 ; serial
+				28800      ; refresh (8 hours)
+				7200       ; retry (2 hours)
+				604800     ; expire (1 week)
+				86400      ; minimum (1 day)
+				)
+			NS      srv-pdc-01.obs-02.local.
+			
+$ORIGIN 17.168.192.in-addr.arpa.
+1		       PTR	wireless-router-01.obs-02.local.
+2                      PTR	wireless-router-02.obs-02.local.
+3                      PTR	wireless-router-03.obs-02.local.
+4                      PTR	wireless-router-04.obs-02.local.
+5			PTR	tv-projection.obs-02.local.
+12                     PTR	ws-ext-rpopmihaylova.obs-02.local.
+13                     PTR	ws-ext-17-13.obs-02.local.
+14                     PTR	ws-ext-17-14.obs-02.local.
+15                     PTR     ws-ext-17-15.obs-02.local.
+16                     PTR     ws-ext-17-16.obs-02.local.
+17                     PTR     ws-ext-17-17.obs-02.local.
+18                     PTR     ws-ext-17-18.obs-02.local.
+19                     PTR     ws-ext-17-19.obs-02.local.
+20                     PTR     ws-ext-17-20.obs-02.local.
+21                     PTR     ws-ext-17-21.obs-02.local.
+22                     PTR     ws-ext-17-22.obs-02.local.
+23                     PTR     ws-ext-17-23.obs-02.local.
+24                     PTR     ws-ext-17-24.obs-02.local.
+25                     PTR     ws-ext-17-25.obs-02.local.
+26                     PTR     ws-ext-17-26.obs-02.local.
+27                     PTR     ws-ext-17-27.obs-02.local.
+28                     PTR     ws-ext-17-28.obs-02.local.
+29                     PTR     ws-ext-17-29.obs-02.local.
+30                     PTR     ws-ext-17-30.obs-02.local.
+31                     PTR     ws-ext-17-31.obs-02.local.
+32                     PTR     ws-ext-17-32.obs-02.local.
+33                     PTR     ws-ext-17-33.obs-02.local.
+34                     PTR     ws-ext-17-34.obs-02.local.
+35                     PTR     ws-ext-17-35.obs-02.local.
+36                     PTR     ws-ext-17-36.obs-02.local.
+37                     PTR     ws-ext-17-37.obs-02.local.
+38                     PTR     ws-ext-17-38.obs-02.local.
+39                     PTR     ws-ext-17-39.obs-02.local.
+40                     PTR     ws-ext-17-40.obs-02.local.
+171                    PTR     voip-phones-central.obs-02.local.
+172                    PTR     s2h-phone-01.obs-02.local.
+173                    PTR     smatis-phone-01.obs-02.local.
+174                    PTR     s2h-phone-02.obs-02.local.
+175                    PTR     manager-phone-01.obs-02.local.
+176                    PTR     aon-phone-01.obs-02.local.
+177                    PTR     aon-phone-02.obs-02.local.
+178                    PTR     mercer-phone-01.obs-02.local.
+179                    PTR     admins-phone-01.obs-02.local.
+180                    PTR     boss-phone-01.obs-02.local.
+181                    PTR     manager-phone-02.obs-02.local.
+182                    PTR     accounting-phone-01.obs-02.local.
+183                    PTR     meetingroom-phone-01.obs-02.local.
+184                    PTR     sn-phone-01.obs-02.local.
+185                    PTR     sn-phone-02.obs-02.local.
+186                    PTR     santiane-phone-01.obs-02.local.
+187                    PTR     santiane-phone-02.obs-02.local.
+188                    PTR     ipeca-phone-01.obs-02.local.
+190		       PTR     ws-ext-17-190.obs-02.local.
+191                    PTR     ws-ext-17-191.obs-02.local.
+192                    PTR     ws-ext-17-192.obs-02.local.
+193                    PTR     ws-ext-17-193.obs-02.local.
+194                    PTR     ws-ext-17-194.obs-02.local.
+195                    PTR     ws-ext-17-195.obs-02.local.
+196                    PTR     ws-ext-17-196.obs-02.local.
+197                    PTR     ws-ext-17-197.obs-02.local.
+198                    PTR     ws-ext-17-198.obs-02.local.
+199                    PTR     ws-ext-17-199.obs-02.local.
+248                    PTR     ws-ext-17-248.obs-02.local.
+249                    PTR     ws-ext-17-249.obs-02.local.
+250                    PTR     ws-ext-17-250.obs-02.local.
+251                    PTR     ws-ext-17-251.obs-02.local.
+252                    PTR     ws-ext-17-252.obs-02.local.
+253                    PTR     ws-ext-17-253.obs-02.local.
+206		       PTR     ws-ext-17-206.obs-02.local.				
+202		       PTR     ws-ext-17-202.obs-02.local.
+201		       PTR     ws-ext-17-201.obs-02.local.
+203		       PTR     ws-ext-17-203.obs-02.local.
+243		       PTR     ws-ext-17-243.obs-02.local.
+205		       PTR     ws-ext-17-205.obs-02.local.
+207		       PTR     ws-ext-17-207.obs-02.local.
+208		       PTR     ws-ext-17-208.obs-02.local.
+209		       PTR     ws-ext-17-209.obs-02.local.
+244		       PTR     ws-ext-17-244.obs-02.local.
+245		       PTR     ws-ext-17-245.obs-02.local.
+200		       PTR     ws-ext-17-200.obs-02.local.
+204		       PTR     ws-ext-17-204.obs-02.local.
+208                    PTR     ws-ext-17-208.obs-02.local.
+209                    PTR     ws-ext-17-209.obs-02.local.
+210                    PTR     ws-ext-17-210.obs-02.local.
+211                    PTR     ws-ext-17-211.obs-02.local.
+212                    PTR     ws-ext-17-212.obs-02.local.
+213                    PTR     ws-ext-17-213.obs-02.local.
+214                    PTR     ws-ext-17-214.obs-02.local.
+215                    PTR     ws-ext-17-215.obs-02.local.
+216                    PTR     ws-ext-17-216.obs-02.local.
+217                    PTR     ws-ext-17-217.obs-02.local.
+218                    PTR     ws-ext-17-218.obs-02.local.
+219                    PTR     ws-ext-17-219.obs-02.local.
+220                    PTR     ws-ext-17-220.obs-02.local.
+221                    PTR     ws-ext-17-221.obs-02.local.
+222                    PTR     ws-ext-17-222.obs-02.local.
+223                    PTR     ws-ext-17-223.obs-02.local.
+224                    PTR     ws-ext-17-224.obs-02.local.
+225                    PTR     ws-ext-17-225.obs-02.local.
+226                    PTR     ws-ext-17-226.obs-02.local.
+227                    PTR     ws-ext-17-227.obs-02.local.
+228                    PTR     ws-ext-17-228.obs-02.local.
+229                    PTR     ws-ext-17-229.obs-02.local.
+230                    PTR     ws-ext-17-230.obs-02.local.
+231                    PTR     ws-ext-17-231.obs-02.local.
+232                    PTR     ws-ext-17-232.obs-02.local.
+233                    PTR     ws-ext-17-233.obs-02.local.
+234                    PTR     ws-ext-17-234.obs-02.local.
+235                    PTR     ws-ext-17-235.obs-02.local.
+236                    PTR     ws-ext-17-236.obs-02.local.
+237                    PTR     ws-ext-17-237.obs-02.local.
+238                    PTR     ws-ext-17-238.obs-02.local.
+239                    PTR     ws-ext-17-239.obs-02.local.
+240                    PTR     ws-ext-17-240.obs-02.local.
+241                    PTR     ws-ext-17-241.obs-02.local.
+242                    PTR     ws-ext-17-242.obs-02.local.
+243                    PTR     ws-ext-17-243.obs-02.local.
+244                    PTR     ws-ext-17-244.obs-02.local.
+245                    PTR     ws-ext-17-245.obs-02.local.
+246                    PTR     ws-ext-17-246.obs-02.local.
+247                    PTR     ws-ext-17-247.obs-02.local.
+248                    PTR     ws-ext-17-248.obs-02.local.
+249                    PTR     ws-ext-17-249.obs-02.local.
+250                    PTR     ws-ext-17-250.obs-02.local.
+251                    PTR     ws-ext-17-251.obs-02.local.
+252                    PTR     ws-ext-17-252.obs-02.local.
+253                    PTR     ws-ext-17-253.obs-02.local.
+
+

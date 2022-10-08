@@ -1,0 +1,112 @@
+#!/bin/bash
+
+# a quick script that will run the program given as argument in each user's
+# home
+
+# we cd in each user homedir and export HOME accordingly, so the program 
+# may use it
+# example: a script like 'rm -fr "$HOME/.ICAClient/cache"' would work as 
+# expected, as well as "rm -fr .ICAClient/cache"
+
+
+# ivan - feb 16 05 - initial version
+
+# bugs/limitation:
+#
+# - arguments should not rely on " or ' or whatever that bash may corrupt
+#   when assigning a string to a variable
+
+
+disp() {
+   echo "$(basename "$0"): $*" >&2
+}
+
+err() {
+   disp "error: $*"
+   exit 1
+}
+
+BASE_HOME=/home
+
+DIR_IREGEX="\(lost\+found\|tmp\|share\|public\|0_OBS_FILES\|updates\)"
+
+usage() {
+   echo "Usage: $(basename "$0") [ -h base_dir ] [ -i iregex ] program [ args ]" >&2
+   echo "   -h base_dir : folder in which we look for user dirs" >&2
+   echo "   -i iregex   : a find iregex for dirs that WON'T be matched" >&2
+   echo >&2
+   echo "defaults:" >&2
+   echo "  base_dir: $BASE_HOME" >&2
+   echo "  iregex: $DIR_IREGEX" >&2
+   echo >&2   
+}
+
+
+
+while getopts "h:i:" Option
+do
+   case $Option in
+      h) BASE_HOME="$OPTARG"
+         ;;
+      i) DIR_IREGEX="$OPTARG"
+         ;;
+      *) usage && err "Unimplemented parameter"
+   esac
+done
+
+# jump to args not given as options
+shift $((OPTIND - 1))
+
+
+PROG="$1" ; shift
+PROG_ARGS="$*"
+
+[ -z "$PROG" ] && usage && err "specify a program !"
+
+if ! ( type -p "$PROG" > /dev/null || [ -x "$PROG" -a -r "$PROG" ] ); then
+   err "\"$PROG\" not executable/readable or not found in path"
+fi
+
+[ -z "${PROG##./*}" ] && err "\"$PROG\" can't be in a relative path"
+
+[ ! -d "$BASE_HOME" ] && err "\"$BASE_HOME\" doesn't exist"
+
+
+IFS="
+"
+
+OLD_HOME=$HOME
+OLD_PWD=$PWD
+
+disp "Using $BASE_HOME for user dirs"
+disp "Program is \"$PROG\" ; args are \"$PROG_ARGS\""
+
+ERR_DIRS=
+
+for i in `find "$BASE_HOME" -type d -maxdepth 1 -mindepth 1 ! -iregex "$BASE_HOME/$DIR_IREGEX"`; do
+
+   disp "cd'ing into user dir \"$i\""
+   
+   export HOME="$i"
+   
+   cd "$i"
+   
+   $PROG $PROG_ARGS
+   RETVAL="$?"
+   
+   if [ "$RETVAL" -ne 0 ]; then
+   
+      disp "Failed to run $PROG $PROG_ARGS in $i ; retval is $RETVAL"
+      ERR_DIRS="$ERR_DIRS $(basename "$i")"
+      
+   fi
+   
+done
+
+# that's useless, but who knows
+export HOME=$OLD_HOME
+cd $OLD_PWD
+
+[ -n "$ERR_DIRS" ] && err "Failed to run $PROG $PROG_ARGS in $ERR_DIRS"
+
+exit 0

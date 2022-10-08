@@ -1,0 +1,27 @@
+#!/bin/bash
+#Author
+#DATE
+
+for i in USA UAE Bulgaria Slovakia Turkey Greece
+do 
+	case $i in USA )	
+	echo Welcome to North America ;;
+        UAE )
+	echo Welcome to UAE ;;
+Bulgaria )
+	echo drastee ;;
+Slovakia )
+	echo soitron ;;
+Turkey )
+	echo turchen ;;
+*)
+	echo rest is history ;;
+esac
+
+
+done
+
+
+
+#end
+

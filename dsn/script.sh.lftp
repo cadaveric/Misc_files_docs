@@ -1,0 +1,6 @@
+open -u root,xxx sftp://192.168.16.6
+cd /etc/obs/dsn/dsn/
+lcd /home/ilkatsarov/Desktop/dsn/
+mirror -R --exclude-glob *.sh --exclude-glob *.lftp
+
+#mirror --exclude-glob *.sh --exclude-glob *.lftp 	#######miirror everything from remote srv to local dir

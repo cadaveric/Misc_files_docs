@@ -1,0 +1,148 @@
+#!/bin/bash
+
+# ! YOU SHOULD USE tmpwatch INSTEAD OF THIS SCRIPT !
+
+
+# ivan - Oct 20th 2003
+
+# a quick script that erases everything older than X days. 
+# (based on the modify time (-mtime flag of find command))
+#
+# ! use with caution !
+#
+
+# SECURITY:
+#
+# by default, the script will only output what it would do. use the -c 
+# option to "commit"; using the -c and the -q option together would result
+# in a silent process
+#
+# i use -exec for find, so the script should cope well with weird
+# filenames
+#
+# i don't use the disp and err function, because it they fail, you'll
+# be dead because you won't exit after an error
+
+
+# bugs/limitations
+#
+#  - relies on the time of the day; -> if the computer's time is not ok, you'll
+#    delete or skip files that were not to be deleted/skipped
+#
+#  - if the -s option is given, we'll skip only the LAST or CURRENT weekend if we're
+#    sunday or saturday. we won't skip the other weekends.
+#
+
+
+disp() {
+   echo -e "$*" >&2
+}
+
+err() {
+   disp "$*"
+   exit 1
+}   
+
+
+
+usage() {
+   disp "Usage: $0 [ -cds ] nb_days dir"
+   disp "   -c : \"commit\" deletions"
+   disp "   -d : remove empty dirs"
+   disp "   -f : remove files, links, etc., except empty dirs"
+   disp "   -s : skip last/current week-end"
+   disp "   -q : be quiet"
+}
+
+
+add_day() {
+   let "NB_DAYS++"
+}
+
+
+TEST_ONLY="echo"
+REMOVE_EMPTY=""
+REMOVE_FILES=""
+SKIP_WE=""
+QUIET=""
+
+while getopts "cdfsq" Option
+do
+   case $Option in
+         c) TEST_ONLY=""
+	    ;;
+	 d) REMOVE_EMPTY="yes"
+	    ;;
+	 f) REMOVE_FILES="yes"
+	    ;;
+	 s) SKIP_WE="yes"
+	    ;;
+	 q) QUIET="yes"
+	    ;;
+	 *) usage && err "Unimplemented parameter"
+   esac
+done
+
+
+# jump to args not given as options
+shift $((OPTIND - 1))
+
+[ "$#" -ne 2 ] && usage && exit 1
+
+NB_DAYS="$1"
+CLEAN_DIR="$2"
+
+[ ! -d "$CLEAN_DIR" ] && err "No such dir: $CLEAN_DIR"
+
+if ! echo $NB_DAYS | grep -q '^[0-9]\+$'; then
+	err "$NB_DAYS is not a valid number"
+fi
+
+[ "$NB_DAYS" -eq 0 ] && err "nb. of days can't be 0"
+
+if [ -z "$REMOVE_EMPTY" ] && [ -z "$REMOVE_FILES" ]; then
+   err "you must select at least the -d or -f option"
+fi
+
+
+# in case we want to skip the last weekend:
+# saturday is like friday: 1 day offset
+# for other days, if DAY_NB - NB_DAYS <= 0, then skip 2 days
+# otherwise don't skip anything
+if [ ! -z "$SKIP_WE" ]; then
+
+   DAY_NB=`date "+%w"`
+   if [ "$?" -ne 0 ] || [ "$DAY_NB" -gt 6 ] || [ "$DAY_NB" -lt 0 ]; then
+      err "Error with date when finding week day number"
+   fi
+
+   if [ "$DAY_NB" -eq 6 ]; then
+      add_day  # saturday
+   elif [ `expr "$DAY_NB" - "$NB_DAYS"` -le 0 ]; then
+      add_day; add_day
+   fi
+
+fi
+
+VERBOSE_FIND=""
+if [ -z "$QUIET" ]; then
+   [ "$TEST_ONLY" = "echo" ] && disp "*** TEST MODE ***"
+   [ -n "$SKIP_WE" ] && disp "offset for weekends: $DAYS_OFFSET days"
+   disp "erase files older than $NB_DAYS days"
+   VERBOSE_FIND="-exec echo remove {} ;"
+fi
+
+
+# the regex matches the tmp file in the form /tmp/tmpfile, /tmp//tmpfile,
+# //tmp///tmpfile, ... ; because find will output the files with as many
+# slashed as specified by the user; note that this regex is needed only if
+# we use clean_old on the /tmp folder
+if [ ! -z "$REMOVE_FILES" ]; then
+    find "$CLEAN_DIR/" ! -type d ! -regex "/*tmp/*$(basename "$TMP_FILE")" -mtime +$NB_DAYS $VERBOSE_FIND -exec $TEST_ONLY rm -f {} \;
+fi
+
+if [ ! -z "$REMOVE_EMPTY" ]; then
+    find "$CLEAN_DIR/" -type d -mindepth 1 -depth -mtime +$NB_DAYS $VERBOSE_FIND \
+       -exec $TEST_ONLY rmdir --ignore-fail-on-non-empty {} \;
+fi
+

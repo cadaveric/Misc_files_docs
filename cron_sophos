@@ -1,0 +1,16 @@
+#!/bin/bash
+
+err() {
+        echo "$*" >&2
+        exit 1
+}
+
+cd /home/ikatsarov/Downloads/Vision/Automation/ || err "Error moving to this dir!" 
+
+zone=("" "laptops_home" "laptops_home_2")
+
+ANSIBLE_GATHERING=explicit ansible-playbook --user root -e "pchosts=${zone[1]}" -i inventory.laptops playbook_laptops.yml --tags "sophos"
+
+sleep 1
+
+ANSIBLE_GATHERING=explicit ansible-playbook --user root -e "pchosts=${zone[2]}" -i inventory.laptops playbook_laptops.yml --tags "sophos"

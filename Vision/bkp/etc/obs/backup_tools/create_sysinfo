@@ -1,0 +1,70 @@
+#!/bin/bash
+
+# ivan - nov 24 05 
+
+
+# since we don't run anymore ssh commands directly from the backup machine
+# we need a way to show "system" information that might come handy when
+# recreating a crashed unrecoverable machine
+# this is what this script does ; the output is /tmp/.sysinfo-day
+# where day is the day of the week given by date +%a
+
+
+SYSINFO_FILE="/tmp/.OBS-sysinfo-$(date +%a)"
+
+
+# ---------------------------
+
+disp() {
+    echo -e "$*" >&2
+}
+
+err() {
+   disp "$*"
+   exit 1
+}
+
+runcmd() {
+    echo -e "\n ---- begin $* ---- \n"
+    $*
+    echo -e "\n ---- end $* ---- \n"
+}
+
+
+# ---------------------
+
+# empty/touch file 
+echo > "$SYSINFO_FILE"  || err "Can't empty $SYSINFO_FILE"
+
+exec > "$SYSINFO_FILE"
+
+echo -e "\nThis file is generated from $0\n"
+
+runcmd date
+runcmd last
+runcmd uptime
+runcmd uname -a
+runcmd w
+
+# boot stuff
+runcmd cat /boot/grub/menu.lst
+runcmd cat /boot/grub/device.map
+
+
+# mounted hardrives, and sfdisk dump of them 
+# (use sfdisk /dev/hda < sfdisk_output to recreate a similar hd)
+
+runcmd mount -l
+
+# yes this is chinese, but it works great
+for i in `mount -l | sed  -ne "/^\/dev\/[hs]d[a-z][0-9]*/  s/^\(\/dev\/[hs]d[a-z]\).*/\1/p" | sort -u`; do
+
+	echo
+	echo "found mounted harddisk $i; sfdisk output:"
+	echo
+	sfdisk -d $i
+	echo
+
+done
+
+runcmd df -h

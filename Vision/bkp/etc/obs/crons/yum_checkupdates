@@ -1,0 +1,32 @@
+#!/bin/bash
+
+# ivan - aug 11 05
+
+BASE_LOGNAME=/var/log/yum-checkupdates
+
+EMAIL_TO=root
+
+err() {
+
+    echo "$(basename "$0"): $*" >&2
+    exit 1
+
+}
+
+# the effect of touch is to create the file if it doesn't exist 
+# (this should happen only once at install time)
+touch "${BASE_LOGNAME}.new"
+
+mv "${BASE_LOGNAME}.new" "${BASE_LOGNAME}.old" || err "can't move"
+
+yum -d1 check-update > "${BASE_LOGNAME}.new" #  || err "yum failed"
+
+if ! ( [ $(wc -l "${BASE_LOGNAME}.new" | awk ' { print $1 } ') -eq 0 ] ||
+        cmp -s "${BASE_LOGNAME}.old" "${BASE_LOGNAME}.new" ) ; then
+
+    cat "${BASE_LOGNAME}.new" | mail -s "Updates needed on $HOSTNAME" $EMAIL_TO
+
+fi
+
+exit 0
+

@@ -1,0 +1,14 @@
+# AUTO-GENERATED FILE - DO NOT EDIT!! Use ldapmodify.
+# CRC32 acd47a18
+dn: cn=module{0}
+objectClass: olcModuleList
+cn: module{0}
+olcModuleLoad: {0}back_bdb
+olcModuleLoad: {1}back_monitor
+structuralObjectClass: olcModuleList
+entryUUID: 86211642-1167-103c-9f0f-0f23c818d7c8
+creatorsName: cn=config
+createTimestamp: 20220124134440Z
+entryCSN: 20220124134440.725484Z#000000#000#000000
+modifiersName: cn=config
+modifyTimestamp: 20220124134440Z

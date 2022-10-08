@@ -1,0 +1,5 @@
+dn: olcDatabase={1}bdb,cn=config
+#olcRootDN: cn=ldaproot,dc=obs,dc=local
+changetype: modify
+replace: olcRootPW
+olcRootPW: {SSHA}cudC1KbmViESpTgF5xsQpZ7vku+FRhOz

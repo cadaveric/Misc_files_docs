@@ -1,0 +1,486 @@
+IP ADDRESS: 192.168.17.20
+Model name:            Intel(R) Pentium(R) Gold G5400 CPU @ 3.70GHz
+Model Family:     Phison Driven SSDs
+Device Model:     KINGSTON SA400S37120G
+CentOS Linux release 7.9.2009 (Core)
+####
+IP ADDRESS: 192.168.17.22
+Model name:            Intel(R) Pentium(R) Gold G5400 CPU @ 3.70GHz
+Model Family:     Phison Driven SSDs
+Device Model:     KINGSTON SA400S37120G
+CentOS Linux release 7.9.2009 (Core)
+####
+IP ADDRESS: 192.168.17.23
+Model name:            Intel(R) Pentium(R) Gold G5400 CPU @ 3.70GHz
+Model Family:     Phison Driven SSDs
+Device Model:     KINGSTON SA400S37120G
+CentOS Linux release 7.9.2009 (Core)
+####
+IP ADDRESS: 192.168.17.24
+Model name:            Intel(R) Pentium(R) Gold G5400 CPU @ 3.70GHz
+Model Family:     Phison Driven SSDs
+Device Model:     KINGSTON SA400S37120G
+CentOS Linux release 7.9.2009 (Core)
+####
+IP ADDRESS: 192.168.17.25
+Model name:            Intel(R) Pentium(R) Gold G5400 CPU @ 3.70GHz
+Model Family:     Phison Driven SSDs
+Device Model:     KINGSTON SA400S37120G
+CentOS Linux release 7.9.2009 (Core)
+####
+IP ADDRESS: 192.168.17.26
+Model name:            Intel(R) Pentium(R) Gold G5400 CPU @ 3.70GHz
+Model Family:     Phison Driven SSDs
+Device Model:     KINGSTON SA400S37120G
+CentOS Linux release 7.9.2009 (Core)
+####
+IP ADDRESS: 192.168.17.27
+Model name:            Intel(R) Pentium(R) Gold G5400 CPU @ 3.70GHz
+Model Family:     Phison Driven SSDs
+Device Model:     KINGSTON SA400S37120G
+CentOS Linux release 7.9.2009 (Core)
+####
+dkireva  :0           2022-01-10 09:48 (:0)
+IP ADDRESS: 192.168.17.32
+Model name:            Intel(R) Pentium(R) Gold G5400 CPU @ 3.70GHz
+Model Family:     Phison Driven SSDs
+Device Model:     KINGSTON SA400S37120G
+CentOS Linux release 7.9.2009 (Core)
+####
+ndimitrova :0           2022-01-10 13:42 (:0)
+IP ADDRESS: 192.168.17.33
+Model name:            Intel(R) Pentium(R) Gold G5400 CPU @ 3.70GHz
+Model Family:     Phison Driven SSDs
+Device Model:     KINGSTON SA400S37120G
+CentOS Linux release 7.9.2009 (Core)
+####
+IP ADDRESS: 192.168.17.36
+Model name:            Intel(R) Pentium(R) Gold G5400 CPU @ 3.70GHz
+Model Family:     Phison Driven SSDs
+Device Model:     KINGSTON SA400S37120G
+CentOS Linux release 7.9.2009 (Core)
+####
+IP ADDRESS: 192.168.17.37
+Model name:            Intel(R) Pentium(R) Gold G5400 CPU @ 3.70GHz
+Model Family:     Phison Driven SSDs
+Device Model:     KINGSTON SA400S37120G
+CentOS Linux release 7.9.2009 (Core)
+####
+IP ADDRESS: 192.168.17.38
+Model name:            Intel(R) Pentium(R) Gold G5400 CPU @ 3.70GHz
+Model Family:     Phison Driven SSDs
+Device Model:     KINGSTON SA400S37120G
+CentOS Linux release 7.9.2009 (Core)
+####
+ppancheva :0           2022-01-12 08:50 (:0)
+IP ADDRESS: 192.168.17.39
+Model name:            Intel(R) Pentium(R) Gold G5400 CPU @ 3.70GHz
+Model Family:     Phison Driven SSDs
+Device Model:     KINGSTON SA400S37120G
+CentOS Linux release 7.9.2009 (Core)
+####
+ikuasi   :0           2022-01-12 09:16 (:0)
+IP ADDRESS: 192.168.17.40
+Model name:            Intel(R) Pentium(R) Gold G5400 CPU @ 3.70GHz
+Model Family:     Phison Driven SSDs
+Device Model:     KINGSTON SA400S37120G
+CentOS Linux release 7.9.2009 (Core)
+####
+tmarinova :0           2022-01-10 10:02 (:0)
+IP ADDRESS: 192.168.17.43
+Model name:            Intel(R) Pentium(R) Gold G5400 CPU @ 3.70GHz
+Model Family:     Phison Driven SSDs
+Device Model:     KINGSTON SA400S37120G
+CentOS Linux release 7.9.2009 (Core)
+####
+eblagoeva :0           2022-01-10 09:39 (:0)
+IP ADDRESS: 192.168.17.45
+Model name:            Intel(R) Pentium(R) Gold G5400 CPU @ 3.70GHz
+Model Family:     Phison Driven SSDs
+Device Model:     KINGSTON SA400S37120G
+CentOS Linux release 7.9.2009 (Core)
+####
+temin    :0           2022-01-12 09:43 (:0)
+IP ADDRESS: 192.168.17.46
+Model name:            Intel(R) Pentium(R) Gold G5400 CPU @ 3.70GHz
+Model Family:     Phison Driven SSDs
+Device Model:     KINGSTON SA400S37120G
+CentOS Linux release 7.9.2009 (Core)
+####
+amitkova :0           2022-01-12 08:22 (:0)
+IP ADDRESS: 192.168.17.47
+Model name:            Intel(R) Pentium(R) Gold G5400 CPU @ 3.70GHz
+Model Family:     Phison Driven SSDs
+Device Model:     KINGSTON SA400S37120G
+CentOS Linux release 7.9.2009 (Core)
+####
+IP ADDRESS: 192.168.17.49
+Model name:            Intel(R) Pentium(R) Gold G5400 CPU @ 3.70GHz
+Model Family:     Phison Driven SSDs
+Device Model:     KINGSTON SA400S37120G
+CentOS Linux release 7.9.2009 (Core)
+####
+IP ADDRESS: 192.168.17.51
+Model name:            Intel(R) Pentium(R) Gold G5400 CPU @ 3.70GHz
+Model Family:     Phison Driven SSDs
+Device Model:     KINGSTON SA400S37120G
+CentOS Linux release 7.9.2009 (Core)
+####
+ageorgieva :0           2022-01-11 13:47 (:0)
+IP ADDRESS: 192.168.17.52
+Model name:            Intel(R) Pentium(R) CPU G4400 @ 3.30GHz
+Model Family:     SiliconMotion based SSDs
+Device Model:     TS120GSSD220S
+CentOS Linux release 7.9.2009 (Core)
+####
+jfurer   :0           2022-01-12 09:10 (:0)
+IP ADDRESS: 192.168.17.56
+Model name:            Intel(R) Pentium(R) Gold G5400 CPU @ 3.70GHz
+Model Family:     Phison Driven SSDs
+Device Model:     KINGSTON SA400S37120G
+CentOS Linux release 7.9.2009 (Core)
+####
+slyamova :0           2022-01-12 09:46 (:0)
+IP ADDRESS: 192.168.17.57
+Model name:            Intel(R) Pentium(R) Gold G5400 CPU @ 3.70GHz
+Model Family:     Phison Driven SSDs
+Device Model:     KINGSTON SA400S37120G
+CentOS Linux release 7.9.2009 (Core)
+####
+jschildknecht :0           2022-01-12 09:59 (:0)
+IP ADDRESS: 192.168.17.58
+Model name:            Intel(R) Pentium(R) Gold G5400 CPU @ 3.70GHz
+Model Family:     Phison Driven SSDs
+Device Model:     KINGSTON SA400S37120G
+CentOS Linux release 7.9.2009 (Core)
+####
+smomcheva :0           2022-01-12 09:58 (:0)
+IP ADDRESS: 192.168.17.59
+Model name:            Intel(R) Pentium(R) Gold G5400 CPU @ 3.70GHz
+Model Family:     Phison Driven SSDs
+Device Model:     KINGSTON SA400S37120G
+CentOS Linux release 7.9.2009 (Core)
+####
+ggetov   :0           2022-01-10 09:44 (:0)
+IP ADDRESS: 192.168.17.61
+Model name:            Intel(R) Pentium(R) Gold G5400 CPU @ 3.70GHz
+Model Family:     Phison Driven SSDs
+Device Model:     KINGSTON SA400S37120G
+CentOS Linux release 7.9.2009 (Core)
+####
+IP ADDRESS: 192.168.17.63
+Model name:            Intel(R) Pentium(R) Gold G5400 CPU @ 3.70GHz
+Device Model:     SSDPR-CL100-120-G3
+CentOS Linux release 7.9.2009 (Core)
+####
+amontresor :0           2022-01-10 09:51 (:0)
+IP ADDRESS: 192.168.17.64
+Model name:            Intel(R) Pentium(R) Gold G5400 CPU @ 3.70GHz
+Model Family:     Phison Driven SSDs
+Device Model:     KINGSTON SA400S37120G
+CentOS Linux release 7.9.2009 (Core)
+####
+hbali    :0           2022-01-10 08:32 (:0)
+IP ADDRESS: 192.168.17.66
+Model name:            Intel(R) Pentium(R) Gold G5400 CPU @ 3.70GHz
+Model Family:     Phison Driven SSDs
+Device Model:     KINGSTON SA400S37120G
+CentOS Linux release 7.9.2009 (Core)
+####
+IP ADDRESS: 192.168.17.67
+Model name:            Intel(R) Pentium(R) Gold G5400 CPU @ 3.70GHz
+Model Family:     Phison Driven SSDs
+Device Model:     KINGSTON SA400S37120G
+CentOS Linux release 7.9.2009 (Core)
+####
+abaine   :0           2022-01-12 09:50 (:0)
+IP ADDRESS: 192.168.17.68
+Model name:            Intel(R) Pentium(R) Gold G5400 CPU @ 3.70GHz
+Model Family:     Phison Driven SSDs
+Device Model:     KINGSTON SA400S37120G
+CentOS Linux release 7.9.2009 (Core)
+####
+ikuasi   :0           2022-01-10 10:15 (:0)
+IP ADDRESS: 192.168.17.69
+Model name:            Intel(R) Pentium(R) Gold G5400 CPU @ 3.70GHz
+Model Family:     Phison Driven SSDs
+Device Model:     KINGSTON SA400S37120G
+CentOS Linux release 7.9.2009 (Core)
+####
+IP ADDRESS: 192.168.17.70
+Model name:            Intel(R) Pentium(R) Gold G5400 CPU @ 3.70GHz
+Model Family:     Phison Driven SSDs
+Device Model:     KINGSTON SA400S37120G
+CentOS Linux release 7.9.2009 (Core)
+####
+ddimitrov :0           2022-01-12 09:59 (:0)
+IP ADDRESS: 192.168.17.73
+Model name:            Intel(R) Pentium(R) Gold G5400 CPU @ 3.70GHz
+Model Family:     Phison Driven SSDs
+Device Model:     KINGSTON SA400S37120G
+CentOS Linux release 7.9.2009 (Core)
+####
+epanev   tty1         2022-01-12 09:09 (:0)
+IP ADDRESS: 192.168.17.74
+Model name:          Intel(R) Pentium(R) Gold G5420 CPU @ 3.80GHz
+Device Model:     Patriot Burst
+CentOS Linux release 8.2.2004 (Core) 
+####
+stouil   :0           2022-01-12 09:25 (:0)
+IP ADDRESS: 192.168.17.76
+Model name:            Intel(R) Pentium(R) Gold G5400 CPU @ 3.70GHz
+Model Family:     Phison Driven SSDs
+Device Model:     KINGSTON SA400S37120G
+CentOS Linux release 7.9.2009 (Core)
+####
+IP ADDRESS: 192.168.17.77
+Model name:          Intel(R) Pentium(R) Gold G5400 CPU @ 3.70GHz
+Device Model:     KINGSTON SA400S37120G
+CentOS Linux release 8.2.2004 (Core) 
+####
+trenier  :0           2022-01-12 09:35 (:0)
+IP ADDRESS: 192.168.17.78
+Model name:            Intel(R) Pentium(R) Gold G5400 CPU @ 3.70GHz
+Model Family:     Phison Driven SSDs
+Device Model:     KINGSTON SA400S37120G
+CentOS Linux release 7.9.2009 (Core)
+####
+shranova :0           2022-01-10 09:56 (:0)
+IP ADDRESS: 192.168.17.79
+Model name:            Intel(R) Pentium(R) Gold G5420 CPU @ 3.80GHz
+Model Family:     Phison Driven SSDs
+Device Model:     KINGSTON SA400S37120G
+CentOS Linux release 7.9.2009 (Core)
+####
+fpenkov  :0           2022-01-12 09:54 (:0)
+IP ADDRESS: 192.168.17.80
+Model name:            Intel(R) Pentium(R) Gold G5420 CPU @ 3.80GHz
+Device Model:     Patriot Burst
+CentOS Linux release 7.9.2009 (Core)
+####
+mctochev :0           2022-01-10 09:44 (:0)
+IP ADDRESS: 192.168.17.82
+Model name:            Intel(R) Pentium(R) Gold G5400 CPU @ 3.70GHz
+Model Family:     Phison Driven SSDs
+Device Model:     KINGSTON SA400S37120G
+CentOS Linux release 7.9.2009 (Core)
+####
+bdavid   :0           2022-01-12 09:21 (:0)
+IP ADDRESS: 192.168.17.83
+Model name:            Intel(R) Pentium(R) Gold G5400 CPU @ 3.70GHz
+Model Family:     Phison Driven SSDs
+Device Model:     KINGSTON SA400S37120G
+CentOS Linux release 7.9.2009 (Core)
+####
+gavramov :0           2022-01-10 10:05 (:0)
+IP ADDRESS: 192.168.17.84
+Model name:            Intel(R) Pentium(R) Gold G5400 CPU @ 3.70GHz
+Model Family:     Phison Driven SSDs
+Device Model:     KINGSTON SA400S37120G
+CentOS Linux release 7.9.2009 (Core)
+####
+tlouya   :0           2022-01-12 09:53 (:0)
+IP ADDRESS: 192.168.17.86
+Model name:            Intel(R) Pentium(R) Gold G5400 CPU @ 3.70GHz
+Model Family:     Phison Driven SSDs
+Device Model:     KINGSTON SA400S37120G
+CentOS Linux release 7.9.2009 (Core)
+####
+ikolcheva :0           2022-01-12 09:46 (:0)
+IP ADDRESS: 192.168.17.87
+Model name:            Intel(R) Pentium(R) Gold G5400 CPU @ 3.70GHz
+Model Family:     Phison Driven SSDs
+Device Model:     KINGSTON SA400S37120G
+CentOS Linux release 7.9.2009 (Core)
+####
+ahalle   :0           2022-01-12 09:46 (:0)
+IP ADDRESS: 192.168.17.90
+Model name:            Intel(R) Pentium(R) Gold G5400 CPU @ 3.70GHz
+Model Family:     Phison Driven SSDs
+Device Model:     KINGSTON SA400S37120G
+CentOS Linux release 7.9.2009 (Core)
+####
+IP ADDRESS: 192.168.17.91
+Model name:            Intel(R) Pentium(R) Gold G5400 CPU @ 3.70GHz
+Model Family:     Phison Driven SSDs
+Device Model:     KINGSTON SA400S37120G
+CentOS Linux release 7.9.2009 (Core)
+####
+tpenerlieva :0           2022-01-12 08:59 (:0)
+IP ADDRESS: 192.168.17.99
+Model name:            Intel(R) Pentium(R) CPU G4400 @ 3.30GHz
+Device Model:     ADATA SU650
+CentOS Linux release 7.9.2009 (Core)
+####
+datanasov :0           2022-01-12 09:27 (:0)
+IP ADDRESS: 192.168.17.100
+Model name:            Intel(R) Pentium(R) Gold G5400 CPU @ 3.70GHz
+Model Family:     Phison Driven SSDs
+Device Model:     KINGSTON SA400S37120G
+CentOS Linux release 7.9.2009 (Core)
+####
+ipuneva  :0           2022-01-12 08:20 (:0)
+IP ADDRESS: 192.168.17.101
+Model name:            Intel(R) Pentium(R) Gold G5400 CPU @ 3.70GHz
+Model Family:     Phison Driven SSDs
+Device Model:     KINGSTON SA400S37120G
+CentOS Linux release 7.9.2009 (Core)
+####
+IP ADDRESS: 192.168.17.102
+Model name:            Intel(R) Pentium(R) Gold G5400 CPU @ 3.70GHz
+Model Family:     Phison Driven SSDs
+Device Model:     KINGSTON SA400S37120G
+CentOS Linux release 7.9.2009 (Core)
+####
+IP ADDRESS: 192.168.17.103
+Model name:            Intel(R) Pentium(R) Gold G5400 CPU @ 3.70GHz
+Model Family:     Phison Driven SSDs
+Device Model:     KINGSTON SA400S37120G
+CentOS Linux release 7.9.2009 (Core)
+####
+IP ADDRESS: 192.168.17.104
+Model name:            Intel(R) Pentium(R) Gold G5400 CPU @ 3.70GHz
+Model Family:     Phison Driven SSDs
+Device Model:     KINGSTON SA400S37120G
+CentOS Linux release 7.9.2009 (Core)
+####
+dbozhkova :0           2022-01-12 09:09 (:0)
+IP ADDRESS: 192.168.17.105
+Model name:            Intel(R) Pentium(R) Gold G5400 CPU @ 3.70GHz
+Model Family:     Phison Driven SSDs
+Device Model:     KINGSTON SA400S37120G
+CentOS Linux release 7.9.2009 (Core)
+####
+lvuteva  :0           2022-01-12 08:24 (:0)
+IP ADDRESS: 192.168.17.106
+Model name:            Intel(R) Pentium(R) Gold G5400 CPU @ 3.70GHz
+Model Family:     Phison Driven SSDs
+Device Model:     KINGSTON SA400S37120G
+CentOS Linux release 7.9.2009 (Core)
+####
+gdimov   :0           2022-01-12 08:55 (:0)
+IP ADDRESS: 192.168.17.108
+Model name:            Intel(R) Pentium(R) Gold G5400 CPU @ 3.70GHz
+Model Family:     Phison Driven SSDs
+Device Model:     KINGSTON SA400S37120G
+CentOS Linux release 7.9.2009 (Core)
+####
+ystoeva  :0           2022-01-12 08:53 (:0)
+IP ADDRESS: 192.168.17.109
+Model name:            Intel(R) Pentium(R) Gold G5400 CPU @ 3.70GHz
+Model Family:     Phison Driven SSDs
+Device Model:     KINGSTON SA400S37120G
+CentOS Linux release 7.9.2009 (Core)
+####
+ttrifonova :0           2022-01-12 08:24 (:0)
+IP ADDRESS: 192.168.17.110
+Model name:            Intel(R) Pentium(R) Gold G5400 CPU @ 3.70GHz
+Model Family:     Phison Driven SSDs
+Device Model:     KINGSTON SA400S37120G
+CentOS Linux release 7.9.2009 (Core)
+####
+IP ADDRESS: 192.168.17.112
+Model name:            Intel(R) Pentium(R) CPU G4400 @ 3.30GHz
+Device Model:     ADATA SU800
+CentOS Linux release 7.9.2009 (Core)
+####
+ihristova :0           2022-01-12 09:44 (:0)
+IP ADDRESS: 192.168.17.113
+Model name:            Intel(R) Pentium(R) Gold G5400 CPU @ 3.70GHz
+Model Family:     Phison Driven SSDs
+Device Model:     KINGSTON SA400S37120G
+CentOS Linux release 7.9.2009 (Core)
+####
+IP ADDRESS: 192.168.17.114
+Model name:            Intel(R) Pentium(R) CPU G4400 @ 3.30GHz
+Device Model:     ADATA SU800
+CentOS Linux release 7.9.2009 (Core)
+####
+eivanova :0           2022-01-12 09:06 (:0)
+IP ADDRESS: 192.168.17.115
+Model name:            Intel(R) Pentium(R) Gold G5400 CPU @ 3.70GHz
+Model Family:     Phison Driven SSDs
+Device Model:     KINGSTON SA400S37120G
+CentOS Linux release 7.9.2009 (Core)
+####
+vfilipova :0           2022-01-12 09:51 (:0)
+IP ADDRESS: 192.168.17.117
+Model name:            Intel(R) Pentium(R) CPU G4400 @ 3.30GHz
+Model Family:     Phison Driven SSDs
+Device Model:     KINGSTON SA400S37120G
+CentOS Linux release 7.9.2009 (Core)
+####
+IP ADDRESS: 192.168.17.118
+Model name:            Intel(R) Pentium(R) Gold G5400 CPU @ 3.70GHz
+Model Family:     Phison Driven SSDs
+Device Model:     KINGSTON SA400S37120G
+CentOS Linux release 7.9.2009 (Core)
+####
+ygeorgieva :0           2022-01-12 09:40 (:0)
+IP ADDRESS: 192.168.17.130
+Model name:            Intel(R) Pentium(R) CPU G4560 @ 3.50GHz
+Model Family:     SiliconMotion based SSDs
+Device Model:     TS120GSSD220S
+CentOS Linux release 7.9.2009 (Core)
+####
+mboteva  :0           2022-01-12 08:29 (:0)
+IP ADDRESS: 192.168.17.133
+Model name:            Intel(R) Pentium(R) CPU G4560 @ 3.50GHz
+Device Model:     SSDPR-CL100-120-G3
+CentOS Linux release 7.9.2009 (Core)
+####
+pgeorgiev :0           2022-01-12 09:50 (:0)
+IP ADDRESS: 192.168.17.134
+Model name:            Intel(R) Pentium(R) CPU G4400 @ 3.30GHz
+Device Model:     ADATA SU650
+CentOS Linux release 7.9.2009 (Core)
+####
+IP ADDRESS: 192.168.17.138
+Model name:            Intel(R) Pentium(R) CPU G4560 @ 3.50GHz
+Device Model:     ADATA SU650
+CentOS Linux release 7.9.2009 (Core)
+####
+mproychev :0           2022-01-12 09:00 (:0)
+IP ADDRESS: 192.168.17.140
+Model name:            Intel(R) Pentium(R) Gold G5400 CPU @ 3.70GHz
+Model Family:     Phison Driven SSDs
+Device Model:     KINGSTON SA400S37120G
+CentOS Linux release 7.9.2009 (Core)
+####
+avladimirova :0           2022-01-12 07:53 (:0)
+IP ADDRESS: 192.168.17.150
+Model name:            Intel(R) Pentium(R) CPU G4560 @ 3.50GHz
+Device Model:     ADATA SU650
+CentOS Linux release 7.9.2009 (Core)
+####
+ktomova  :0           2022-01-12 09:39 (:0)
+IP ADDRESS: 192.168.17.152
+Model name:            Intel(R) Pentium(R) CPU G4560 @ 3.50GHz
+Device Model:     ADATA SU650
+CentOS Linux release 7.9.2009 (Core)
+####
+tyordanova :0           2022-01-12 09:11 (:0)
+IP ADDRESS: 192.168.17.166
+Model name:            Intel(R) Pentium(R) Gold G5400 CPU @ 3.70GHz
+Device Model:     ADATA SU650
+CentOS Linux release 7.9.2009 (Core)
+####
+achibi   :0           2022-01-12 10:03 (:0)
+IP ADDRESS: 192.168.17.197
+Model name:            Intel(R) Pentium(R) Gold G5400 CPU @ 3.70GHz
+Model Family:     Phison Driven SSDs
+Device Model:     KINGSTON SA400S37120G
+CentOS Linux release 7.9.2009 (Core)
+####
+IP ADDRESS: 192.168.17.208
+Model name:            Intel(R) Pentium(R) Gold G5400 CPU @ 3.70GHz
+Model Family:     Phison Driven SSDs
+Device Model:     KINGSTON SA400S37120G
+CentOS Linux release 7.9.2009 (Core)
+####
+ mcoquet              2022-01-10 12:04
+IP ADDRESS: 192.168.17.250
+Model name:          Intel(R) Pentium(R) Gold G5400 CPU @ 3.70GHz
+Device Model:     KINGSTON SA400S37120G
+CentOS Linux release 8.2.2004 (Core) 
+####

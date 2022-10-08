@@ -1,0 +1,35 @@
+epanev   :0           2021-12-29 10:03 (:0)
+IP ADDRESS: 192.168.18.132
+Model name:            Intel(R) Celeron(R) CPU J3455 @ 1.50GHz
+Model Family:     Phison Driven SSDs
+Device Model:     KINGSTON SA400S37120G
+CentOS Linux release 7.9.2009 (Core)
+####
+root     pts/0        2022-01-14 13:31 (adm-dkiryakov.obs-02.local)
+IP ADDRESS: 192.168.18.139
+Model name:            Intel(R) Celeron(R) CPU J3455 @ 1.50GHz
+Model Family:     Phison Driven SSDs
+Device Model:     KINGSTON SA400S37240G
+CentOS Linux release 7.9.2009 (Core)
+####
+pmarchand :0           2022-01-14 10:03 (:0)
+IP ADDRESS: 192.168.18.206
+Model name:            Intel(R) Celeron(R) J4105 CPU @ 1.50GHz
+Model Family:     Phison Driven SSDs
+Device Model:     KINGSTON SA400S37120G
+CentOS Linux release 7.9.2009 (Core)
+####
+nyankov  :0           2022-01-11 10:50 (:0)
+IP ADDRESS: 192.168.18.213
+Model name:            Intel(R) Pentium(R) Gold G6405 CPU @ 4.10GHz
+Model Family:     Phison Driven SSDs
+Device Model:     KINGSTON SA400S37120G
+CentOS Linux release 7.9.2009 (Core)
+####
+ppetrunov :0           2022-01-14 09:28 (:0)
+IP ADDRESS: 192.168.18.215
+Model name:            Intel(R) Pentium(R) Gold G6405 CPU @ 4.10GHz
+Model Family:     Phison Driven SSDs
+Device Model:     KINGSTON SA400S37120G
+CentOS Linux release 7.9.2009 (Core)
+####

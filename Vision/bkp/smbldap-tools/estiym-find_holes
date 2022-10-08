@@ -1,0 +1,85 @@
+#!/usr/bin/perl -w
+
+use strict;
+
+use FindBin;
+use FindBin qw($RealBin);
+use lib "$RealBin/";
+use smbldap_tools;
+
+use Getopt::Std;
+my %Options;
+
+my $from_num = 5000;
+my $max_num = 7000;
+
+#####################
+
+my $ldap_mesg;
+my @uids;
+my $entry;
+my $val;
+
+my $arg;
+my $ldap_attr = "";
+
+my $ok = getopts('ugpf:m:?h', \%Options);
+if ( (!$ok) || ($Options{'?'}) || ($Options{'h'}) ) {
+	print "Usage: $0 [ -f num ] [ -t num ]  -u|g|p\n";
+	print "   -u: list uid holes\n";
+	print "   -g: list gid holes\n";
+	print "   -p: list softphones holes\n";
+	print "   -f: from_number\n";
+	print "   -m: max_number\n";
+	print " default: from $from_num to $max_num\n";
+	exit (1);
+}
+
+if ($Options{'u'}) {
+	$ldap_attr = 'uidNumber';
+} elsif ($Options{'g'}) {
+	$ldap_attr = 'gidNumber';
+} elsif ($Options{'p'}) {
+	$ldap_attr = 'obsWorkSoftPhone';
+}
+
+my $tmp;
+if ($tmp = $Options{'f'}) {
+	$from_num = $tmp;
+}
+if ($tmp = $Options{'m'}) {
+	$max_num = $tmp;
+}
+
+die "Empty ldap attribute; see usage (-h)" if ($ldap_attr eq "");
+
+my $ldap_master=connect_ldap_master();
+
+$ldap_mesg = $ldap_master->search(
+        attrs => [ $ldap_attr ],
+        base   => $config{suffix},
+	filter =>"($ldap_attr=*)"
+);
+
+for (my $index = $from_num; $index < $max_num; $index++) {
+	$uids[$index] = 0;
+}
+my $max = 0;
+for ( my $index = 0 ; $index < $ldap_mesg->count() ; $index++) {
+        $entry = $ldap_mesg->entry($index);
+	$val = $entry->get_value($ldap_attr);
+	next if ($val eq "");
+	$uids[$val] = 1;
+	$max = $val if ( $val > $max && $val < $max_num);
+}
+
+for (my $index = $from_num; $index < $max; $index++) {
+	print "free: " . $index . "\n" if ($uids[$index] == 0);
+}
+
+print "everything's free after: $max ( search interval: \[$from_num:$max_num\[ )\n";
+
+$ldap_master->unbind;		# take down session
+
+exit 0;
+

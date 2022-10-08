@@ -1,0 +1,75 @@
+#!/bin/bash
+
+# ivan - Feb 8 04 - initial version
+
+# a tool to start a process randomly within a given interval
+
+# how: we use the "$RANDOM" shell feature to get a pseudo randomm number
+# and compute it modulo the given interval
+
+
+# bugs/limitations: 
+#
+#   - this script is bloated - only tests - the "functional" part is 2 lines
+#   - relies on dc and $RANDOM shell feature
+#   - be careful with the arguments given for the process, as shell
+#     expansion is often hard to deal with
+#   - feature: we always sleep at least 1 second before starting the process
+#     it means that at most we can sleep $INTERVAL seconds
+
+
+err() {
+    echo -e "$*" >&2
+    exit 1
+}
+
+
+
+# checks
+
+if [ "$#" -lt 2 ]; then 
+    err "Usage: randomize_process seconds process [ process args ]
+\texample: randomize_process 15 /bin/ls 
+\twill start /bin/ls randomly in the [0-15] interval
+\t( in seconds )"
+fi
+
+# we shift to be able to specify process arguments with $* later
+INTERVAL="$1"; shift
+PROCESS="$1"; shift
+
+
+# test if $RANDOM works
+if ! echo "$RANDOM" grep '^[0-9]\+$' > /dev/null; then
+    err "RANDOM feature doesn't seem to work (var is not a number)"
+fi
+
+if ! type -p "dc" > /dev/null; then
+    err "No dc executable found in $PATH"
+fi
+
+if ! echo $INTERVAL | grep '^[0-9]\+$' > /dev/null; then
+    err "Wrong format of the given interval: \"$INTERVAL\""
+fi
+
+[ "$INTERVAL" -ge 32767 ] &&
+    err "$INTERVAL is too big (should be less than 32767)"
+
+[ "$INTERVAL" -lt 2 ] &&
+    err "$INTERVAL is too small (should be at least 2)"
+
+
+if ! type -p "$PROCESS" > /dev/null && [ ! -x "$PROCESS" ]; then
+    err "$PROCESS not found or not executable"
+fi
+
+
+
+# should be ok if we reached that point
+
+# add 1 second anyway
+RANDOM_VAL=`echo "$RANDOM$RANDOM $INTERVAL % 1 + p" | dc`
+
+sleep $RANDOM_VAL
+
+exec $PROCESS $*

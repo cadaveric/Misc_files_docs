@@ -1,0 +1,6 @@
+
+# ips that will be allowed to rsync files on this machine
+
+ALLOWED_IPS=
+#ALLOWED_IPS="$ALLOWED_IPS 1.2.3.4"
+#ALLOWED_IPS="$ALLOWED_IPS 5.6.7.8"

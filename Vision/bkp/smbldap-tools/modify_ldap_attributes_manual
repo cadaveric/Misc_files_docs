@@ -1,0 +1,56 @@
+#!/usr/bin/perl -w
+
+use strict;
+
+my @objectClasses = (	'obsPerson',
+			'officePerson',
+			'CourierMailAccount',
+			'mozillaAbPersonAlpha'
+		);
+
+use FindBin;
+use FindBin qw($RealBin);
+use lib "$RealBin/";
+use smbldap_tools;
+#####################
+
+
+my $userName = $ARGV[0];
+my $user_full_name = $ARGV[1];
+
+if (!$userName or !$user_full_name) {
+	print "Usage: $0 username 'user_full_name' Example: iivanov 'Ivan Ivanov Ivanov'\n";
+	exit (1);
+}
+
+chomp $userName;
+chomp $user_full_name;
+
+#print "\nuserName=$userName user_full_name=$user_full_name\n";
+#exit (1);
+
+my $ldap_master=connect_ldap_master();
+
+my $retval = 0;
+
+# NGK
+
+	my $modify = $ldap_master->modify ( "uid=$userName,$config{usersdn}",
+                            changes => [
+                	       		   replace => [gecos => "$user_full_name"],
+		                           replace => [displayName => "$user_full_name"],
+                                           replace => [cn => "$user_full_name"],
+                                           replace => [mail => "$userName\@$config{mailDomain}"]
+                                       ]
+                                   );
+
+	if ($modify->code) { 
+		print "failed to add entry:: ", $modify->error . "\n";
+		$retval = 1;
+	}
+
+
+
+$ldap_master->unbind;		# take down session
+
+exit ($retval);

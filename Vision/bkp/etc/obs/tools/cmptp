@@ -1,0 +1,40 @@
+#!/bin/bash
+
+[ $# -ne 1 ] && echo "Usage: $0 interface" && exit -1
+
+if [ -x /sbin/ip ] && ! /sbin/ip link show up | grep $1 > /dev/null; then
+    echo "$1 is not up or doesn't exist"
+    exit -1
+fi
+
+FIRSTTIME=yes
+
+echo "Statistics for $1:"
+echo
+echo -e "Date\t\tTX: Pkt  Byte\tRX: Pkt   Byte"
+
+while [ 1 ]; do
+VALS=`/sbin/ip -s link show dev $1 | grep '^.*[0-9]' | tail -n2 | awk '{ print $1" "$2" "$7" "$8 }'`
+
+OLDBYTERX=$BYTERX
+OLDPKTRX=$PKTRX
+OLDBYTETX=$BYTETX
+OLDPKTTX=$PKTTX
+
+BYTERX=`echo $VALS | cut -d" " -f1`
+PKTRX=`echo $VALS | cut -d" " -f2`
+BYTETX=`echo $VALS | cut -d" " -f3`
+PKTTX=`echo $VALS | cut -d" " -f4`
+
+if [ -z "$FIRSTTIME" ]; then
+#   echo -ne `date +"%H:%M:%S"` "\t"
+   echo -ne `date +"%T"` "\t"
+   echo -ne "    "`expr $PKTTX - $OLDPKTTX`"  "
+   echo -ne `expr $BYTETX - $OLDBYTETX` "\t"
+   echo -ne "    "`expr $PKTRX - $OLDPKTRX` "  "
+   echo -e `expr $BYTERX - $OLDBYTERX`
+fi
+
+FIRSTTIME=
+sleep 1
+done

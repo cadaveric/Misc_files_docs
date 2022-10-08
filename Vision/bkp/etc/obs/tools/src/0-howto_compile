@@ -1,0 +1,10 @@
+# better to compile statically
+
+# gcc -o binary_name -Wall -static file.c
+
+# for the lazy, pipe this file into sh when you're *IN* the src/ folder
+
+for i in $(ls *.c); do
+    echo "compiling $i"
+    gcc -o ../${i%.c} -Wall -static $i
+done

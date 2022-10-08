@@ -1,0 +1,10 @@
+#!/bin/bash
+
+let line=1 
+
+for ((i=10;i<=77;i++)) 
+do 
+  mac=`cat 19_phone_macs | awk -v awkvar="$line" 'NR == awkvar'` 
+  echo -e "\nhost ws-ext-19-$i {\nhardware ethernet $mac;\nfixed-address 192.168.19.$i;\n\t\t}" 
+  let line="$line"+1  
+done

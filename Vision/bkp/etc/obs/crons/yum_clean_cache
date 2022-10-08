@@ -1,0 +1,10 @@
+#!/bin/bash
+
+# ivan - feb 22 05
+
+# maybe check that yum is not working ? btw i think yum will complain 
+# if a 2nd instance is working so that's not dangerous
+
+/usr/bin/yum -y -d0 clean packages
+
+

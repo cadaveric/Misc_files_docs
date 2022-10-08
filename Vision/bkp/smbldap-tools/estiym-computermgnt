@@ -1,0 +1,72 @@
+#!/bin/bash
+
+# ivan - nov 29 06
+
+disp() {
+	echo "$*" >&2
+}
+err() {
+	disp "$*"
+	exit 1
+}
+
+
+usage() {
+	disp "Usage: $(basename "$0") [ -a ] [ -d ] machine"
+	disp "   -a:  add machine"
+	disp "   -d:  remove machine"
+#	disp "   default: show machine"
+	exit 1
+}
+
+ADD_MACHINE=
+DEL_MACHINE=
+#SHOW_MACHINE=1
+SHOW_MACHINE=   # /etc/openldap/access.conf prevents anonymous search of computers
+
+while getopts "ad" Option; do
+	case $Option in
+		a) ADD_MACHINE=1 ; SHOW_MACHINE=
+		;;
+		d) DEL_MACHINE=1 ; SHOW_MACHINE=
+		;;
+		*) usage
+	esac
+done
+
+shift $((OPTIND - 1))
+
+[ -z "$1" ] && usage
+
+#MACHINE_UID="$(echo $1 | tr '[:lower:]' '[:upper:]')"
+MACHINE_UID=$1
+
+[ -n "$DEL_MACHINE" -a -n "$ADD_MACHINE" ] && err "Can't have both -a and -d"
+
+if [ -n "$SHOW_MACHINE" ]; then
+	ldapsearch -h localhost -LLL -l 3 -x -b "ou=Computers,dc=obs,dc=local" "uid=$MACHINE_UID"
+	exit
+fi
+
+cd /usr/local/smbldap-tools || err "Can't cd to smbldap tools dir"
+
+if [ -n "$ADD_MACHINE" ]; then
+	RETVAL=1
+
+	./smbldap-useradd -w "$MACHINE_UID"
+	RETVAL=$?
+	
+	# ivan - mar 10 07 - not needed anymore
+	#if [ $RETVAL -eq 0 ]; then
+	#	./obs-computer_addsambaattributes "$MACHINE_UID"
+	#fi
+
+	exit $RETVAL # exit with the retval of useradd, it's the most important
+fi
+
+if [ -n "$DEL_MACHINE" ]; then
+	./smbldap-userdel "${MACHINE_UID}$"
+	exit
+fi
+
+exit 0
